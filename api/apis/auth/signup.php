@@ -1,6 +1,6 @@
 <?php
 
-${basename(__FILE__.'php')} = function ()
+${basename(__FILE__,'.php')} = function ()
 {  
     
     if($this->get_request_method() == "POST" and isset($this->_request['username'] ) and isset($this->_request['email'] ) and isset($this->_request['password'] ) )
