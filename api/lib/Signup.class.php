@@ -1,6 +1,6 @@
 <?php
-    require_once($_SERVER['DOCUMENT_ROOT']."/learnAPI/api/lib/Database.class.php");
-    require($_SERVER['DOCUMENT_ROOT']."/learnAPI/vendor/autoload.php");
+    require_once($_SERVER['DOCUMENT_ROOT']."/LearnAPI/api/lib/Database.class.php");
+    require($_SERVER['DOCUMENT_ROOT']."/LearnAPI/vendor/autoload.php");
 
 class signup
 {   

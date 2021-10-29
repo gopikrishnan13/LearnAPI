@@ -30,11 +30,6 @@ ${basename(__FILE__,'.php')} = function ()
         }
         else
         {
-            $data = [
-                "error" => "Bad request"
-            ];
-            $data = $this->json($data);
-            return $this->response($data,404);
         }
     };
 ?>

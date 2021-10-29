@@ -1,5 +1,5 @@
 <?php
-    require_once($_SERVER['DOCUMENT_ROOT']."/learnAPI/api/lib/Database.class.php");
+    require_once($_SERVER['DOCUMENT_ROOT']."/LearnAPI/api/lib/Database.class.php");
 
 class verifyAccount
 {

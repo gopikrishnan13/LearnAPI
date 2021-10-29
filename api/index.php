@@ -1,11 +1,13 @@
 <?php
     //die(var_dump($_GET['namespace']));
     error_reporting(E_ALL ^ E_DEPRECATED);
-    require_once($_SERVER['DOCUMENT_ROOT']."/learnAPI/api/REST.api.php");
-    require_once($_SERVER['DOCUMENT_ROOT']."/learnAPI/api/lib/Database.class.php");
-    require_once($_SERVER['DOCUMENT_ROOT']."/learnAPI/api/lib/Signup.class.php");
-    require_once($_SERVER['DOCUMENT_ROOT']."/learnAPI/api/lib/verify.php");
-    require_once($_SERVER['DOCUMENT_ROOT']."/learnAPI/api/lib/login.class.php");
+    require_once($_SERVER['DOCUMENT_ROOT']."/LearnAPI/api/REST.api.php");
+    require_once($_SERVER['DOCUMENT_ROOT']."/LearnAPI/api/lib/Database.class.php");
+    require_once($_SERVER['DOCUMENT_ROOT']."/LearnAPI/api/lib/Signup.class.php");
+    require_once($_SERVER['DOCUMENT_ROOT']."/LearnAPI/api/lib/verify.php");
+    require_once($_SERVER['DOCUMENT_ROOT']."/LearnAPI/api/lib/login.class.php");
+    require_once($_SERVER['DOCUMENT_ROOT']."/LearnAPI/api/lib/user.class.php");
+    require_once($_SERVER['DOCUMENT_ROOT']."/LearnAPI/api/lib/Auth.class.php");
 
     class API extends REST {
 
@@ -15,7 +17,7 @@
 
         public function __construct()
         {
-            parent::__construct();                            // Init parent contructor
+            parent::__construct();                         // Init parent contructor
             //$this->db = Database::getConnection();           // Initiate Database connection
         }
 
@@ -35,13 +37,13 @@
             {
             //$this->response($this->json(["msg" => "Bad Request"]),400);  // If the method not exist with in this class, response would be "Page not found".
                 if(isset($_GET['namespace'])){
-                    $dir = $_SERVER['DOCUMENT_ROOT'].'/learnAPI/api/apis/'.$_GET['namespace'];
+                    $dir = $_SERVER['DOCUMENT_ROOT'].'/LearnAPI/api/apis/'.$_GET['namespace'];
                     $file = $dir.'/'.$func.'.php';
-                   // die($file);
-                    if(file_exists($file)){
-                        include $file;
-                        $this->current_call = Closure::bind(${$func}, $this, get_class());
-                        $this->$func();
+                   //die(print(file_exists($file)));
+                   if(file_exists($file)){
+                       include $file;
+                       $this->current_call = Closure::bind(${$func}, $this, get_class());
+                       $this->$func();
                     } else {
                         $this->response($this->json(['error'=>'method_not_found']),404);
                     }
@@ -78,8 +80,7 @@
             $this->response($data,200);
 
         }
-        
-        /* Funciton sigin to verify the sigin process */
+        /*
             function login()
             {
                 if("POST" == $this->get_request_method() and isset($this->_request['username']) and isset($this->_request['password']))
@@ -108,6 +109,7 @@
                     $this->response($this->json($data),404);
                 }
             }
+            */
 
         private function test(){
                 $data = $this->json(getallheaders());

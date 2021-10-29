@@ -1,6 +1,6 @@
 <?php
-    require_once($_SERVER['DOCUMENT_ROOT']."/learnAPI/api/lib/Database.class.php");
-    require_once($_SERVER['DOCUMENT_ROOT']."/learnAPI/api/lib/Signup.class.php");
+    require_once($_SERVER['DOCUMENT_ROOT']."/LearnAPI/api/lib/Database.class.php");
+    require_once($_SERVER['DOCUMENT_ROOT']."/LearnAPI/api/lib/Signup.class.php");
 
 
     class login
